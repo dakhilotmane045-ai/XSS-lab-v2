@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#000;color:#0f0;padding:20px;font-family:monospace">
+<h2>🔐 XSS-lab-v2 - Keeper P2 Lab $2500</h2>
+<p>Shared Folder Name -> Stored XSS -> Anyone</p>
+<input id=t placeholder="Title / Shared Folder Name" style="width:100%;padding:10px;background:#111;color:#fff;border:1px solid #333">
+<textarea id=n placeholder="Notes" style="width:100%;height:60px;margin-top:10px;padding:10px;background:#111;color:#fff;border:1px solid #333"></textarea>
+<button onclick="s()" style="background:red;color:#fff;padding:10px;margin-top:10px;border:0">SAVE - Share to Anyone</button>
+<hr><div id=v></div>
+<script>
+function s(){let d=JSON.parse(localStorage.k||'[]');d.push({t:t.value,n:n.value});localStorage.k=JSON.stringify(d);r()}
+function r(){let d=JSON.parse(localStorage.k||'[]'),h='';d.forEach(x=>h+=`<div style="border:1px solid #333;padding:10px;margin:5px 0"><b>${x.t}</b><br>${x.n}<br><small>P2 Trigger</small></div>`);v.innerHTML=h}r()
+</script>
+</body>
+</html>
